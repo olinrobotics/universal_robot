@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="xamyab_joint_not_limited_robot">
+
+    <xacro:include filename="$(find ur_description)/urdf/xamyab_robot.urdf.xacro"/>
+    <xacro:xamyab_robot joint_limited="false"/>
+</robot>

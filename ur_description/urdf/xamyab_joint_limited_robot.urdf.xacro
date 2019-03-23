@@ -1,44 +1,6 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro"
-       name="xamyab" >
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="xamyab_joint_limited_robot">
 
-  <!-- common stuff -->
-  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
-
-  <!-- ur5 -->
-  <xacro:include filename="$(find ur_description)/urdf/xamyab.urdf.xacro" />
-
-  <!-- left arm -->
-  <xacro:ur5_robot prefix="left_" joint_limited="true"
-    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
-    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
-    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
-    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
-    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
-    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
-  />
-  <!-- right arm -->
-  <xacro:ur5_robot prefix="right_" joint_limited="true"
-    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
-    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
-    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
-    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
-    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
-    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
-  />
-
-  <link name="world" />
-
-  <joint name="left_world_joint" type="fixed">
-    <parent link="world" />
-    <child link = "left_base_link" />
-    <origin xyz="0.0 0.5 0.5" rpy="${-pi / 2} ${pi} 0.0" />
-  </joint>
-
-  <joint name="right_world_joint" type="fixed">
-    <parent link="world" />
-    <child link = "right_base_link" />
-    <origin xyz="0.0 -0.5 0.5" rpy="${pi / 2} 0.0 0.0" />
-  </joint>
-
+    <xacro:include filename="$(find ur_description)/urdf/xamyab_robot.urdf.xacro"/>
+    <xacro:xamyab_robot joint_limited="true"/>
 </robot>

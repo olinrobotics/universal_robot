@@ -1,30 +1,67 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro"
-       name="xamyab" >
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="xamyab">
 
-  <!-- common stuff -->
-  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+    <xacro:macro name="xamyab_robot" params="joint_limited:=false">
+        <!-- common stuff -->
+        <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro"/>
 
-  <!-- ur5 -->
-  <xacro:include filename="$(find ur_description)/urdf/xamyab.urdf.xacro" />
+        <!-- ur5 -->
+        <xacro:include filename="$(find ur_description)/urdf/xamyab_ur5_arm.urdf.xacro"/>
 
-  <!-- left arm -->
-  <xacro:ur5_robot prefix="left_" joint_limited="false"/>
-  <!-- right arm -->
-  <xacro:ur5_robot prefix="right_" joint_limited="false"/>
+        <!-- body -->
+        <xacro:include filename="$(find ur_description)/urdf/xamyab_body.urdf.xacro"/>
 
-  <link name="world" />
+        <!-- left arm -->
+        <xacro:unless value="${joint_limited}">
+            <xacro:ur5_robot prefix="left_" joint_limited="false"/>
+        </xacro:unless>
+        <xacro:if value="${joint_limited}">
+            <xacro:ur5_robot prefix="left_" joint_limited="true"
+                             shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+                             shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+                             elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+                             wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+                             wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+                             wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"/>
+        </xacro:if>
+        <!-- right arm -->
+        <xacro:unless value="${joint_limited}">
+            <xacro:ur5_robot prefix="right_" joint_limited="false"/>
+        </xacro:unless>
+        <xacro:if value="${joint_limited}">
+            <xacro:ur5_robot prefix="right_" joint_limited="true"
+                             shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+                             shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+                             elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+                             wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+                             wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+                             wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"/>
+        </xacro:if>
 
-  <joint name="world_joint" type="fixed">
-    <parent link="world" />
-    <child link = "left_base_link" />
-    <origin xyz="0.0 0.5 0.5" rpy="0.0 0.0 0.0" />
-  </joint>
+        <!-- arm body: Origin is the center of the bottom of the box -->
+        <xacro:property name="width" value="0.4"/>
+        <xacro:property name="depth" value="0.4"/>
+        <xacro:property name="height" value="0.6"/>
+        <xacro:xamyab_body width="${width}" depth="${depth}" height="${height}"/>
 
-  <joint name="world_joint" type="fixed">
-    <parent link="world" />
-    <child link = "right_base_link" />
-    <origin xyz="0.0 -0.5 0.5" rpy="0.0 0.0 0.0" />
-  </joint>
+        <link name="world"/>
 
+        <joint name="body_world_joint" type="fixed">
+            <parent link="world"/>
+            <child link="body_base_link"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </joint>
+
+        <joint name="left_world_joint" type="fixed">
+            <parent link="body_base_link"/>
+            <child link="left_base_link"/>
+            <origin xyz="${width / 2 * 0.6} ${depth / 2} ${height * 0.8}" rpy="${-pi / 2} ${pi} 0.0"/>
+        </joint>
+
+        <joint name="right_world_joint" type="fixed">
+            <parent link="body_base_link"/>
+            <child link="right_base_link"/>
+            <origin xyz="${width / 2 * 0.6} ${-depth / 2} ${height * 0.8}" rpy="${pi / 2} 0.0 0.0"/>
+        </joint>
+    </xacro:macro>
 </robot>
