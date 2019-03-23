@@ -26,7 +26,7 @@ Don't forget to source the correct setup shell files and use a new terminal for 
 
 To bring up the real robot, run:
 
-```roslaunch ur_bringup ur5_bringup.launch robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]```
+```roslaunch ur_bringup xamyab_bringup.launch robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]```
 
 A simple test script that moves the robot to predefined positions can be executed like this:
 
@@ -43,21 +43,21 @@ There exist MoveIt! configuration packages for both robots.
 
 For setting up the MoveIt! nodes to allow motion planning run:
 
-```roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch```
+```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch```
 
 For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 
-```roslaunch ur5_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
 
 
 NOTE:  
 As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited', i.e.:  
 
-```roslaunch ur_bringup ur5_bringup.launch limited:=true robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]```
+```roslaunch ur_bringup xamyab_bringup.launch limited:=true robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]```
 
-```roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch limited:=true```
+```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch limited:=true```
 
-```roslaunch ur5_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
 
 
 ---
@@ -70,7 +70,7 @@ Don't forget to source the correct setup shell files and use a new terminal for 
 
 To bring up the simulated robot in Gazebo, run:
 
-```roslaunch ur_gazebo ur5.launch```
+```roslaunch ur_gazebo xamyab.launch```
 
 
 __MoveIt! with a simulated robot__  
@@ -78,20 +78,20 @@ Again, you can use MoveIt! to control the simulated robot.
 
 For setting up the MoveIt! nodes to allow motion planning run:
 
-```roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch sim:=true```
+```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch sim:=true```
 
 For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 
-```roslaunch ur5_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
 
 
 NOTE:  
 As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited', i.e.:  
 
-```roslaunch ur_gazebo ur5.launch limited:=true```
+```roslaunch ur_gazebo xamyab.launch limited:=true```
 
-```roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch sim:=true limited:=true```
+```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch sim:=true limited:=true```
 
-```roslaunch ur5_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
 
 

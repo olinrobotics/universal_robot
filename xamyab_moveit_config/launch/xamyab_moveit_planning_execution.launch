@@ -1,0 +1,15 @@
+<launch>
+  <arg name="sim" default="false" />
+  <arg name="limited" default="false"/>
+  <arg name="debug" default="false" />
+    
+  <!-- Remap follow_joint_trajectory -->
+  <remap if="$(arg sim)" from="/left_arm/follow_joint_trajectory" to="/left_arm_controller/follow_joint_trajectory"/>
+  <remap if="$(arg sim)" from="/right_arm/follow_joint_trajectory" to="/right_arm_controller/follow_joint_trajectory"/>
+
+  <!-- Launch moveit -->
+  <include file="$(find xamyab_moveit_config)/launch/move_group.launch">
+    <arg name="limited" default="$(arg limited)"/>
+    <arg name="debug" default="$(arg debug)" />
+  </include>
+</launch>
