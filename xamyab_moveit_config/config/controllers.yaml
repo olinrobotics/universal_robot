@@ -19,4 +19,14 @@ controller_list:
       - right_wrist_1_joint
       - right_wrist_2_joint
       - right_wrist_3_joint
+  - name: "left_gripper"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+      - lgripper_finger_joint
+  - name: "right_gripper"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+      - rgripper_finger_joint
 

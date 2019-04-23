@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="xamyab">
 
     <xacro:arg name="limited" default="true"/>
-    <xacro:arg name="grippers" default="0"/>
+    <xacro:arg name="grippers" default="3"/>
     <xacro:property name="limited" value="$(arg limited)"/>
     <xacro:property name="grippers" value="$(arg grippers)"/>
 
@@ -81,7 +81,7 @@
         <!-- left gripper -->
         <xacro:if value="${grippers == 1 or grippers == 3}">
             <xacro:robotiq_arg2f_140 prefix="lgripper_"/>
-            <joint name="lgripper_right_joint" type="fixed">
+            <joint name="lgripper_left_joint" type="fixed">
                 <parent link="left_tool0"/>
                 <child link="lgripper_robotiq_arg2f_base_link"/>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
