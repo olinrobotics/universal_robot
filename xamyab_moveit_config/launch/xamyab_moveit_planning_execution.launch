@@ -1,5 +1,5 @@
 <launch>
-  <arg name="limited" default="false"/>
+  <arg name="limited" default="true"/>
   <arg name="debug" default="false" />
 
   <!-- Launch moveit -->

@@ -47,7 +47,7 @@ For setting up the MoveIt! nodes to allow motion planning run:
 
 For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 
-```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch```
 
 
 NOTE:  
@@ -57,7 +57,7 @@ As MoveIt! seems to have difficulties with finding plans for the UR with full jo
 
 ```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch limited:=true```
 
-```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch```
 
 
 ---
@@ -70,28 +70,33 @@ Don't forget to source the correct setup shell files and use a new terminal for 
 
 To bring up the simulated robot in Gazebo, run:
 
-```roslaunch ur_gazebo xamyab.launch```
+```roslaunch ur_gazebo xamyab.launch grippers:=GRIPPERS_CODE```
 
+GRIPPERS_CODE:
+- 0 = No gripper
+- 1 = Gripper for left arm only
+- 2 = Gripper for right arm only
+- 3 = Grippers for both arms
 
 __MoveIt! with a simulated robot__  
 Again, you can use MoveIt! to control the simulated robot.  
 
 For setting up the MoveIt! nodes to allow motion planning run:
 
-```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch sim:=true```
+```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch```
 
 For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 
-```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch```
 
 
 NOTE:  
 As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited', i.e.:  
 
-```roslaunch ur_gazebo xamyab.launch limited:=true```
+```roslaunch ur_gazebo xamyab.launch grippers:=GRIPPERS_NUM limited:=true```
 
-```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch sim:=true limited:=true```
+```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch limited:=true```
 
-```roslaunch xamyab_moveit_config moveit_rviz.launch config:=true```
+```roslaunch xamyab_moveit_config moveit_rviz.launch```
 
 

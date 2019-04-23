@@ -38,7 +38,7 @@
         <joint name="left_wrist_3_joint" value="0"/>
     </group_state>
     <group_state name="lgripper_close" group="left_gripper">
-        <joint name="lgripper_finger_joint" value="0.775"/>
+        <joint name="lgripper_finger_joint" value="0.755"/>
     </group_state>
     <group_state name="lgripper_open" group="left_gripper">
         <joint name="lgripper_finger_joint" value="0"/>
@@ -110,7 +110,7 @@
         <joint name="right_wrist_3_joint" value="0"/>
     </group_state>
     <group_state name="rgripper_close" group="right_gripper">
-        <joint name="rgripper_finger_joint" value="0.775"/>
+        <joint name="rgripper_finger_joint" value="0.755"/>
     </group_state>
     <group_state name="rgripper_open" group="right_gripper">
         <joint name="rgripper_finger_joint" value="0"/>
