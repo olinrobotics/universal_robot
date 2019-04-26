@@ -1,5 +1,5 @@
 controller_list:
-  - name: left_arm
+  - name: "left_arm"
     joints:
       - left_shoulder_pan_joint
       - left_shoulder_lift_joint
@@ -7,10 +7,7 @@ controller_list:
       - left_wrist_1_joint
       - left_wrist_2_joint
       - left_wrist_3_joint
-  - name: left_gripper
-    joints:
-      - lgripper_finger_joint
-  - name: right_arm
+  - name: "right_arm"
     joints:
       - right_shoulder_pan_joint
       - right_shoulder_lift_joint
@@ -18,6 +15,9 @@ controller_list:
       - right_wrist_1_joint
       - right_wrist_2_joint
       - right_wrist_3_joint
-  - name: right_gripper
+  - name: "left_gripper"
+    joints:
+      - lgripper_finger_joint
+  - name: "right_gripper"
     joints:
       - rgripper_finger_joint
