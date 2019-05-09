@@ -3,8 +3,10 @@
 
     <xacro:arg name="limited" default="true"/>
     <xacro:arg name="grippers" default="3"/>
+    <xacro:arg name="sim" default="true"/>
     <xacro:property name="limited" value="$(arg limited)"/>
     <xacro:property name="grippers" value="$(arg grippers)"/>
+    <xacro:property name="sim" value="true"/>
 
     <!--############## IMPORT STUFF ##############-->
     <!-- common stuff -->
@@ -96,6 +98,14 @@
                 <child link="rgripper_robotiq_arg2f_base_link"/>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
             </joint>
+        </xacro:if>
+
+
+        <!--Kinect-->
+        <xacro:if value="${sim}">
+            <!-- position of kinect has to be changed in common_sensors/urdf/sensors/kinect_properties.urdf.xacro-->
+            <xacro:include filename="$(find common_sensors)/urdf/sensors/kinect.urdf.xacro"/>
+            <xacro:sensor_kinect parent="body_base_link"/>
         </xacro:if>
     </xacro:macro>
 
