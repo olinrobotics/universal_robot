@@ -14,7 +14,13 @@ There are releases available for ROS Hydro and ROS Indigo. However, for the late
 
 First set up a catkin workspace (see [this tutorials](http://wiki.ros.org/catkin/Tutorials)).  
 Then clone the repository into the src/ folder. It should look like /path/to/your/catkin_workspace/src/universal_robot.  
-Make sure to source the correct setup file according to your workspace hierarchy, then use ```catkin_make``` to compile.  
+Make sure to source the correct setup file according to your workspace hierarchy, then use ```catkin_make``` to compile:
+
+```bash
+rosdep install --from-paths src --ignore-src -r -y
+cd ~/catkin_make
+catkin_make
+```
 
 ---
 
@@ -26,11 +32,15 @@ Don't forget to source the correct setup shell files and use a new terminal for 
 
 To bring up the real robot, run:
 
-```roslaunch ur_bringup xamyab_bringup.launch robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]```
+```bash
+roslaunch ur_bringup xamyab_bringup.launch [left_robot_ip:=IP_OF_THE_ROBOT] [left_reverse_port:=REVERSE_PORT] [right_robot_ip:=IP_OF_THE_ROBOT] [right_reverse_port:=REVERSE_PORT] [limited:=true]
+```
 
 A simple test script that moves the robot to predefined positions can be executed like this:
 
-```rosrun ur_driver test_move.py```
+```bash
+rosrun ur_driver test_move.py
+```
 
 
 CAUTION:  
@@ -43,21 +53,25 @@ There exist MoveIt! configuration packages for both robots.
 
 For setting up the MoveIt! nodes to allow motion planning run:
 
-```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch```
+```bash
+roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch grippers:=GRIPPERS_CODE [limited:=true]
+```
+
+GRIPPERS_CODE:
+- 0 = No gripper
+- 1 = Gripper for left arm only
+- 2 = Gripper for right arm only
+- 3 = Grippers for both arms
 
 For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 
-```roslaunch xamyab_moveit_config moveit_rviz.launch```
+```bash
+roslaunch xamyab_moveit_config moveit_rviz.launch
+```
 
 
-NOTE:  
-As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited', i.e.:  
-
-```roslaunch ur_bringup xamyab_bringup.launch limited:=true robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]```
-
-```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch limited:=true```
-
-```roslaunch xamyab_moveit_config moveit_rviz.launch```
+**NOTE:**
+As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited'.
 
 
 ---
@@ -70,7 +84,9 @@ Don't forget to source the correct setup shell files and use a new terminal for 
 
 To bring up the simulated robot in Gazebo, run:
 
-```roslaunch ur_gazebo xamyab.launch grippers:=GRIPPERS_CODE```
+```bash
+roslaunch ur_gazebo xamyab.launch grippers:=GRIPPERS_CODE [limited:=true]
+```
 
 GRIPPERS_CODE:
 - 0 = No gripper
@@ -83,20 +99,17 @@ Again, you can use MoveIt! to control the simulated robot.
 
 For setting up the MoveIt! nodes to allow motion planning run:
 
-```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch```
+```bash
+roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch grippers:=GRIPPERS_CODE [limited:=true]
+```
 
 For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 
-```roslaunch xamyab_moveit_config moveit_rviz.launch```
+```bash
+roslaunch xamyab_moveit_config moveit_rviz.launch
+```
 
 
-NOTE:  
-As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited', i.e.:  
-
-```roslaunch ur_gazebo xamyab.launch grippers:=GRIPPERS_NUM limited:=true```
-
-```roslaunch xamyab_moveit_config xamyab_moveit_planning_execution.launch limited:=true```
-
-```roslaunch xamyab_moveit_config moveit_rviz.launch```
-
+**NOTE:** 
+As MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited'. 
 
