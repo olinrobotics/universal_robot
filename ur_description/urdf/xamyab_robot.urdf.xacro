@@ -6,11 +6,14 @@
     <xacro:arg name="sim" default="true"/>
     <xacro:property name="limited" value="$(arg limited)"/>
     <xacro:property name="grippers" value="$(arg grippers)"/>
-    <xacro:property name="sim" value="true"/>
+    <xacro:property name="sim" value="$(arg sim)"/>
 
     <!--############## IMPORT STUFF ##############-->
     <!-- common stuff -->
     <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro"/>
+
+    <!-- ground -->
+    <xacro:include filename="$(find ur_description)/urdf/ground.urdf.xacro"/>
 
     <!-- ur5 -->
     <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro"/>
@@ -26,6 +29,9 @@
 
     <xacro:macro name="xamyab_robot" params="joint_limited grippers">
         <!--############## INITIALIZATION ##############-->
+        <!--ground -->
+        <xacro:ground/>
+
         <!-- left arm -->
         <xacro:unless value="${joint_limited}">
             <xacro:ur5_robot prefix="left_" joint_limited="false"/>
@@ -62,8 +68,14 @@
 
         <link name="world"/>
 
-        <joint name="body_world_joint" type="fixed">
+        <joint name="ground_world_joint" type="fixed">
             <parent link="world"/>
+            <child link="ground_base_link"/>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        </joint>
+
+        <joint name="body_ground_joint" type="fixed">
+            <parent link="ground_base_link"/>
             <child link="body_base_link"/>
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </joint>
@@ -99,7 +111,6 @@
                 <origin xyz="0 0 0" rpy="0 0 0"/>
             </joint>
         </xacro:if>
-
 
         <!--Kinect-->
         <xacro:if value="${sim}">
