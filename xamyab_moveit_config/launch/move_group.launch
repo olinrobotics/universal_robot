@@ -1,6 +1,6 @@
 <launch>
   <arg name="limited" default="true"/>
-  <arg name="grippers" default="0"/>
+  <arg name="grippers" default="3"/>
 
   <include file="$(find xamyab_moveit_config)/launch/planning_context.launch">
     <arg name="limited" value="$(arg limited)" />

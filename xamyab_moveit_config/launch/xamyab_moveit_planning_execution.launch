@@ -1,6 +1,6 @@
 <launch>
   <arg name="limited" default="true"/>
-  <arg name="grippers" default="0"/>
+  <arg name="grippers" default="3"/>
   <arg name="debug" default="false" />
 
   <!-- Launch moveit -->
