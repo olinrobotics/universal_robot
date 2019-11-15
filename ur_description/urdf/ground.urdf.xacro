@@ -1,5 +1,5 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="ground">
-    <xacro:macro name='ground' params="width:=${10.0} height:=${0.01} depth:=${10} mass:=${0.01}">
+    <xacro:macro name='ground' params="width:=${10.0} height:=${0.0001} depth:=${10} mass:=${0.01}">
         <xacro:property name="ixx" value="${1/12*mass*(height*height + depth*depth)}"/>
         <xacro:property name="iyy" value="${1/12*mass*(width*width + depth*depth)}"/>
         <xacro:property name="izz" value="${1/12*mass*(width*width + height*height)}"/>

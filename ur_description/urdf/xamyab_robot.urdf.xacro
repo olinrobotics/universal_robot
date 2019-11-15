@@ -2,8 +2,8 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="xamyab">
 
     <xacro:arg name="limited" default="true"/>
-    <xacro:arg name="grippers" default="3"/>
-    <xacro:arg name="sim" default="true"/>
+    <xacro:arg name="grippers" default="0"/>
+    <xacro:arg name="sim" default="false"/>
     <xacro:property name="limited" value="$(arg limited)"/>
     <xacro:property name="grippers" value="$(arg grippers)"/>
     <xacro:property name="sim" value="$(arg sim)"/>
@@ -63,7 +63,7 @@
         <!-- arm body: Origin is the center of the bottom of the box -->
         <xacro:property name="width" value="0.3048"/>
         <xacro:property name="depth" value="0.3048"/>
-        <xacro:property name="height" value="0.6096"/>
+        <xacro:property name="height" value="0.5755"/>
         <xacro:xamyab_body width="${width}" depth="${depth}" height="${height}"/>
 
         <link name="world"/>
@@ -71,7 +71,7 @@
         <joint name="ground_world_joint" type="fixed">
             <parent link="world"/>
             <child link="ground_base_link"/>
-            <origin xyz="0 0 0.01" rpy="0 0 0"/>
+            <origin xyz="0 0 0.0001" rpy="0 0 0"/>
         </joint>
 
         <joint name="body_ground_joint" type="fixed">
