@@ -38,7 +38,7 @@
         <joint name="left_wrist_3_joint" value="0"/>
     </group_state>
     <group_state name="lgripper_close" group="left_gripper">
-        <joint name="lgripper_finger_joint" value="0.755"/>
+        <joint name="lgripper_finger_joint" value="0.68"/>
     </group_state>
     <group_state name="lgripper_open" group="left_gripper">
         <joint name="lgripper_finger_joint" value="0"/>
@@ -75,6 +75,8 @@
     <disable_collisions link1="lgripper_right_outer_knuckle" link2="lgripper_right_outer_finger" reason="Adjacent"/>
     <disable_collisions link1="lgripper_right_outer_finger" link2="lgripper_right_inner_finger" reason="Adjacent"/>
     <disable_collisions link1="lgripper_right_inner_knuckle" link2="lgripper_right_inner_finger" reason="Adjacent"/>
+    <disable_collisions link1="lgripper_right_inner_finger_pad" link2="lgripper_right_inner_finger" reason="Adjacent"/>
+    <disable_collisions link1="lgripper_right_inner_knuckle" link2="lgripper_right_inner_finger_pad" reason="Adjacent"/>
     <disable_collisions link1="lgripper_left_outer_knuckle" link2="lgripper_robotiq_arg2f_base_link" reason="Adjacent"/>
     <disable_collisions link1="lgripper_left_inner_knuckle" link2="lgripper_robotiq_arg2f_base_link" reason="Adjacent"/>
     <disable_collisions link1="lgripper_left_outer_knuckle" link2="lgripper_robotiq_arg2f_base_link" reason="Adjacent"/>
@@ -84,6 +86,8 @@
     <disable_collisions link1="lgripper_left_outer_finger" link2="lgripper_left_inner_finger" reason="Adjacent"/>
     <disable_collisions link1="lgripper_left_inner_knuckle" link2="lgripper_left_inner_finger" reason="Adjacent"/>
     <disable_collisions link1="lgripper_left_inner_knuckle" link2="lgripper_left_outer_finger" reason="Adjacent"/>
+    <disable_collisions link1="lgripper_left_inner_finger_pad" link2="lgripper_left_inner_finger" reason="Adjacent"/>
+    <disable_collisions link1="lgripper_left_inner_knuckle" link2="lgripper_left_inner_finger_pad" reason="Adjacent"/>
 
     <!-- RIGHT ARM -->
     <group name="right_manipulator">
@@ -110,7 +114,7 @@
         <joint name="right_wrist_3_joint" value="0"/>
     </group_state>
     <group_state name="rgripper_close" group="right_gripper">
-        <joint name="rgripper_finger_joint" value="0.755"/>
+        <joint name="rgripper_finger_joint" value="0.68"/>
     </group_state>
     <group_state name="rgripper_open" group="right_gripper">
         <joint name="rgripper_finger_joint" value="0"/>
@@ -146,6 +150,8 @@
     <disable_collisions link1="rgripper_right_outer_knuckle" link2="rgripper_right_outer_finger" reason="Adjacent"/>
     <disable_collisions link1="rgripper_right_outer_finger" link2="rgripper_right_inner_finger" reason="Adjacent"/>
     <disable_collisions link1="rgripper_right_inner_knuckle" link2="rgripper_right_inner_finger" reason="Adjacent"/>
+    <disable_collisions link1="rgripper_right_inner_finger_pad" link2="rgripper_right_inner_finger" reason="Adjacent"/>
+    <disable_collisions link1="rgripper_right_inner_knuckle" link2="rgripper_right_inner_finger_pad" reason="Adjacent"/>
     <disable_collisions link1="rgripper_left_outer_knuckle" link2="rgripper_robotiq_arg2f_base_link" reason="Adjacent"/>
     <disable_collisions link1="rgripper_left_inner_knuckle" link2="rgripper_robotiq_arg2f_base_link" reason="Adjacent"/>
     <disable_collisions link1="rgripper_left_outer_knuckle" link2="rgripper_robotiq_arg2f_base_link" reason="Adjacent"/>
@@ -155,6 +161,8 @@
     <disable_collisions link1="rgripper_left_outer_finger" link2="rgripper_left_inner_finger" reason="Adjacent"/>
     <disable_collisions link1="rgripper_left_inner_knuckle" link2="rgripper_left_inner_finger" reason="Adjacent"/>
     <disable_collisions link1="rgripper_left_inner_knuckle" link2="rgripper_left_outer_finger" reason="Adjacent"/>
+    <disable_collisions link1="rgripper_left_inner_finger_pad" link2="rgripper_left_inner_finger" reason="Adjacent"/>
+    <disable_collisions link1="rgripper_left_inner_knuckle" link2="rgripper_left_inner_finger_pad" reason="Adjacent"/>
 
 
 </robot>
