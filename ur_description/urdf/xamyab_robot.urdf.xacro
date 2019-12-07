@@ -83,13 +83,13 @@
         <joint name="left_body_joint" type="fixed">
             <parent link="body_base_link"/>
             <child link="left_base_link"/>
-            <origin xyz="${width / 2 - 0.105} ${depth / 2} 0.5334" rpy="${-pi / 2} ${-pi / 2} 0"/>
+            <origin xyz="${width / 2 - 0.105} ${depth / 2} 0.5134" rpy="${-pi / 2} ${-pi / 2} 0"/>
         </joint>
 
         <joint name="right_body_joint" type="fixed">
             <parent link="body_base_link"/>
             <child link="right_base_link"/>
-            <origin xyz="${width / 2 - 0.105} ${-depth / 2} 0.5334" rpy="${pi / 2} ${pi / 2} 0"/>
+            <origin xyz="${width / 2 - 0.105} ${-depth / 2} 0.5134" rpy="${pi / 2} ${pi / 2} 0"/>
         </joint>
 
         <!-- left gripper -->
